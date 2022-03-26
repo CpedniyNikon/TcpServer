@@ -26,6 +26,7 @@ public class Main {
             bufferedWriter.close();
         }
     }
+
     public static void ClientSession(Socket clientSocket,
                                      InputStreamReader inputStreamReader, BufferedReader bufferedReader,
                                      OutputStreamWriter outputStreamWriter, BufferedWriter bufferedWriter
@@ -82,7 +83,12 @@ public class Main {
             System.out.println(msgFromClient);
             String line = reader.readLine();
             while (line != null) {
-                userList.add(line);
+                StringBuilder name = new StringBuilder();
+                for (int i = 0; i < line.length(); i++) {
+                    if (line.charAt(i) == ' ') break;
+                    name.append(line.charAt(i));
+                }
+                userList.add(name.toString());
                 line = reader.readLine();
             }
 
