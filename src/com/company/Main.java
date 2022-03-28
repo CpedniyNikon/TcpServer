@@ -79,7 +79,7 @@ public class Main {
             FileReader fileReader = new FileReader(logs);
             FileWriter fileWriter = new FileWriter(logs, true);
             BufferedReader reader = new BufferedReader(fileReader);
-
+            // a - hui na
             System.out.println(msgFromClient);
             String line = reader.readLine();
             while (line != null) {
