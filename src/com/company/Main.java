@@ -6,9 +6,7 @@ import java.net.Socket;
 import java.util.ArrayList;
 
 public class Main {
-    private static void newClient(Socket clientSocket,
-                                  InputStreamReader inputStreamReader, BufferedReader bufferedReader,
-                                  OutputStreamWriter outputStreamWriter, BufferedWriter bufferedWriter) throws IOException {
+    private static void newClient(Socket clientSocket, BufferedWriter bufferedWriter) throws IOException {
         clientSockets.add(new Pair(clientSocket, false));
         System.out.println("added new users in general chat");
         bufferedWriter.write("starting getting messages " + (clientSockets.size() - 1));
@@ -172,7 +170,7 @@ public class Main {
     ) throws IOException, InterruptedException {
         String msgFromClient = bufferedReader.readLine();
         if (msgFromClient.equals("new client")) {
-            newClient(clientSocket, inputStreamReader, bufferedReader, outputStreamWriter, bufferedWriter);
+            newClient(clientSocket, bufferedWriter);
         } else if (msgFromClient.startsWith("CommandFromUser")) {
             commandHandler(clientSocket, inputStreamReader, bufferedReader, outputStreamWriter, bufferedWriter, msgFromClient);
         } else if (msgFromClient.startsWith("sendToEveryone")) {
