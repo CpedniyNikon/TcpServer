@@ -90,7 +90,7 @@ public class Main {
         finalBufferedWriter.write("");
         finalBufferedWriter.newLine();
         finalBufferedWriter.flush();
-        System.out.println(index);
+        System.out.println(index + " stopped");
         clientSockets.get(index).hasQuit = true;
     }
 
@@ -103,6 +103,7 @@ public class Main {
 
     private static void start(String finalMsgFromClient) {
         int index = Integer.parseInt(finalMsgFromClient.substring(6));
+        System.out.println(index + " started");
         clientSockets.get(index).hasQuit = false;
     }
 
@@ -201,7 +202,6 @@ public class Main {
         do {
             try {
                 clientSocket = server.accept();
-                System.out.println("new socket connected");
 
                 inputStreamReader = new InputStreamReader(clientSocket.getInputStream());
                 bufferedReader = new BufferedReader(inputStreamReader);
