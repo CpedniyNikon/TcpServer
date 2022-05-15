@@ -10,6 +10,7 @@ public class Main {
         clientSockets.add(new Pair(clientSocket, false));
         System.out.println("added new users in general chat");
         bufferedWriter.write("starting getting messages " + (clientSockets.size() - 1));
+        System.out.println((clientSockets.size()-1) + " started");
         bufferedWriter.newLine();
         bufferedWriter.flush();
     }
